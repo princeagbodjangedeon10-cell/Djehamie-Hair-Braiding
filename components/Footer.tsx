@@ -65,6 +65,11 @@ export function Footer() {
                   Booking
                 </Link>
               </li>
+              <li>
+                <Link href="/policies" className="text-cream/65 transition-colors hover:text-gold">
+                  Good to know
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -109,7 +114,8 @@ export function Footer() {
           <p className="mb-5 rounded-2xl border border-caramel/25 bg-caramel/10 px-5 py-4 text-center font-sans text-xs leading-relaxed text-cream/75">
             🔒 Official website of {business.name}. All bookings happen exclusively by text or
             call at <a href={`tel:${business.phone}`} className="font-semibold text-gold hover:underline">{business.phoneDisplay}</a>.
-            Payment is made at the salon. Only early-morning appointments (before 8 AM) require a
+            You never pay upfront: payment is made at the salon once your braids are halfway done.
+            Only early-morning appointments (before 8 AM) require a
             half-price deposit by Zelle to that same number, requested by Djehamie herself.
             Beware of accounts impersonating our name.
           </p>

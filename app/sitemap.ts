@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const base = "https://djehamiehairbraiding.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/services", "/gallery", "/booking", "/about", "/contact"];
+  const routes = ["", "/services", "/gallery", "/booking", "/about", "/contact", "/policies"];
   return routes.map((r) => ({
     url: `${base}${r}`,
     lastModified: new Date(),

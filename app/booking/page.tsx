@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { business, smsLink, defaultSmsBody, paymentPolicy } from "@/lib/site";
 import { PageHeader } from "@/components/PageHeader";
 import { ArrowIcon, ClockIcon, PhoneIcon } from "@/components/Icons";
@@ -122,9 +123,18 @@ export default function BookingPage() {
               💳
             </span>
             <p className="mt-4 font-display text-xl text-brown-deep">How does payment work?</p>
+            <p className="mt-3 font-sans text-sm font-semibold leading-relaxed text-brown-deep">
+              You never pay upfront. Payment is due once your braids are halfway done.
+            </p>
             <p className="mt-3 font-sans text-sm leading-relaxed text-ink/65">
               {paymentPolicy}
             </p>
+            <Link
+              href="/policies"
+              className="mt-6 inline-flex items-center gap-2 font-sans text-sm font-bold uppercase tracking-[0.14em] text-caramel transition-colors hover:text-brown-deep"
+            >
+              Good to know before your appointment <ArrowIcon className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
