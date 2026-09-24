@@ -60,7 +60,7 @@ export const antiScam = {
     },
     {
       t: "Deposit by Zelle, one case only",
-      d: "Appointments starting at 8:00 AM or later require no deposit, and you never pay upfront: you pay at the salon once your braids are halfway done. Only early-morning appointments (before 8 AM, since Djehamie starts as early as 4 AM) require a deposit of half the braid price the night before. That deposit is paid by Zelle to (773) 801-9351 only, and Djehamie sends you the Zelle request herself from that number. That request is your proof. Any other payment request is a scam.",
+      d: "Appointments starting at 8:00 AM or later require no deposit, and you never pay upfront: you pay at the salon once your braids are halfway done. Only early-morning appointments (before 8 AM, since Djehamie starts as early as 4 AM) require half the braid price to reserve the slot. That deposit is paid by Zelle to (773) 801-9351 only, and Djehamie sends you the Zelle request herself from that number. That request is your proof. Any other payment request is a scam.",
     },
     {
       t: "One address only",
@@ -73,7 +73,7 @@ export const antiScam = {
 
 // Payment policy - shown on the booking and services pages.
 export const paymentPolicy =
-  "Appointments starting at 8:00 AM or later: no deposit, and nothing to pay upfront. Full payment is due at the salon once your braids are halfway done - when you can already see the work with your own eyes. Early-morning appointments (before 8:00 AM, since Djehamie starts as early as 4:00 AM) need a deposit of half the braid price the night before, because early slots are too often missed. The deposit is paid by Zelle to the official number (773) 801-9351 only. Djehamie sends you the Zelle request herself from that number, and that request is your proof. Never send a deposit to any other number or name.";
+  "Appointments starting at 8:00 AM or later: no deposit, and nothing to pay upfront. Full payment is due at the salon once your braids are halfway done - when you can already see the work with your own eyes. Early-morning appointments (before 8:00 AM, since Djehamie starts as early as 4:00 AM) need half the braid price to reserve the slot, because early slots are too often missed. The deposit is paid by Zelle to the official number (773) 801-9351 only. Djehamie sends you the Zelle request herself from that number, and that request is your proof. Never send a deposit to any other number or name.";
 
 /* ─────────────────────────────────────────────────────────────
    Salon policies - the shop rules, rewritten for clients.
@@ -83,9 +83,17 @@ export const paymentPolicy =
 export const policyHighlight = {
   eyebrow: "Our payment promise",
   title: "You never pay before we start",
-  body: "Scammers ask you to pay upfront for a service you will never receive. We do the exact opposite. At Djehamie Hair Braiding, payment is due only once your braids are halfway done, when you can already see the work with your own eyes and judge it for yourself.",
-  note: "One exception: early-morning slots before 8 AM need a half-price deposit the night before, by Zelle to (773) 801-9351 only.",
+  body: "Scammers ask you to pay upfront for a service you will never receive. At Djehamie Hair Braiding, payment is due only once your braids are halfway done, when you can already see the work with your own eyes and judge it for yourself.",
+  note: "One exception: early-morning slots before 8 AM need half the price to reserve the slot, by Zelle to (773) 801-9351 only.",
 };
+
+/* Les essentiels rappelés dans le tunnel de réservation, avant l'envoi. */
+export const bookingEssentials: string[] = [
+  "You never pay upfront: payment is due once your braids are halfway done.",
+  "Tell us about any allergy before we start braiding.",
+  "If a braid feels too tight, say it during the service and we loosen it on the spot.",
+  "Adjustments are free of charge within 24 hours of your appointment.",
+];
 
 export type Policy = {
   t: string;

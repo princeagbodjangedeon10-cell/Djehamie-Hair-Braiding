@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useBooking } from "./BookingProvider";
 import type { BookingService } from "./BookingProvider";
 import { BOOKING_SERVICES, SERVICE_CATEGORIES } from "./services-data";
-import { business, smsLink } from "@/lib/site";
+import { business, smsLink, bookingEssentials } from "@/lib/site";
 
 /* ────────────────────────────────────────────────────────── *
  *  Helpers calendrier                                        *
@@ -552,6 +552,7 @@ function StepConfirmation({
   };
   onClose: () => void;
 }) {
+  const [agreed, setAgreed] = useState(false);
   const isCustom = booking.service?.id === "custom";
   const smsBody = [
     "Hi Djehamie! I'm writing from your official website.",
@@ -622,12 +623,61 @@ function StepConfirmation({
         transition={{ delay: 0.45 }}
         className="mt-7 w-full max-w-sm"
       >
+        {/* Les essentiels, juste avant l'envoi - impossible de passer à côté */}
+        <div className="mb-4 rounded-2xl border border-caramel/30 bg-caramel/8 p-5 text-left">
+          <div className="flex items-center justify-between gap-3">
+            <p className="font-display text-base font-semibold text-brown-deep">
+              How it works at the salon
+            </p>
+            <a
+              href="/policies"
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 font-sans text-[0.65rem] font-bold uppercase tracking-[0.12em] text-caramel underline underline-offset-2 transition-colors hover:text-brown-deep"
+            >
+              Read everything
+            </a>
+          </div>
+
+          <ul className="mt-3 space-y-2">
+            {bookingEssentials.map((e) => (
+              <li key={e} className="flex gap-2.5 font-sans text-[0.72rem] leading-relaxed text-ink/70">
+                <span className="mt-[0.3rem] h-1.5 w-1.5 shrink-0 rounded-full bg-caramel" />
+                <span>{e}</span>
+              </li>
+            ))}
+          </ul>
+
+          <label className="mt-4 flex cursor-pointer items-start gap-2.5 rounded-xl bg-white/70 p-3 transition-colors hover:bg-white">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(ev) => setAgreed(ev.target.checked)}
+              className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-caramel"
+            />
+            <span className="font-sans text-[0.72rem] font-semibold leading-relaxed text-brown-deep">
+              I have read and understood how the salon works.
+            </span>
+          </label>
+        </div>
+
         <a
-          href={smsLink(smsBody)}
-          className="block w-full rounded-full bg-brown-deep py-4 font-sans text-sm font-bold uppercase tracking-[0.14em] text-cream transition-all duration-200 hover:bg-caramel"
+          href={agreed ? smsLink(smsBody) : undefined}
+          onClick={(ev) => { if (!agreed) ev.preventDefault(); }}
+          aria-disabled={!agreed}
+          className={`block w-full rounded-full py-4 font-sans text-sm font-bold uppercase tracking-[0.14em] transition-all duration-200 ${
+            agreed
+              ? "bg-brown-deep text-cream hover:bg-caramel"
+              : "cursor-not-allowed bg-brown-deep/20 text-ink/40"
+          }`}
         >
           Send my request by text
         </a>
+        {!agreed && (
+          <p className="mt-2 font-sans text-[0.7rem] text-ink/50">
+            Tick the box above to send your request.
+          </p>
+        )}
         {booking.hasPhoto && (
           <p className="mt-2 font-sans text-[0.7rem] text-caramel">
             📷 Don&apos;t forget to attach your style photo in the messaging app before sending!
@@ -641,9 +691,8 @@ function StepConfirmation({
         </a>
         <p className="mt-4 rounded-xl bg-caramel/10 px-4 py-3 font-sans text-[0.7rem] leading-relaxed text-brown-deep">
           🔒 {business.phoneDisplay} is the salon&apos;s <strong>only official number</strong>.
-          No deposit for appointments from 8:00 AM: you pay at the salon. Only early-morning
-          slots (before 8 AM) require a half-price deposit by Zelle to this number, and the
-          Zelle request always comes from Djehamie herself.
+          Only early-morning slots (before 8 AM) require half the price to reserve the slot,
+          by Zelle to this number, and the Zelle request always comes from Djehamie herself.
         </p>
         <button
           type="button"
