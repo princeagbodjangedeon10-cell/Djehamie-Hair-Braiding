@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useBooking } from "./BookingProvider";
 import type { BookingService } from "./BookingProvider";
 import { BOOKING_SERVICES, SERVICE_CATEGORIES } from "./services-data";
-import { business, smsLink, bookingEssentials } from "@/lib/site";
+import { business, smsLink, bookingEssentials, salonPolicies, policyHighlight } from "@/lib/site";
 
 /* ────────────────────────────────────────────────────────── *
  *  Helpers calendrier                                        *
@@ -553,6 +553,7 @@ function StepConfirmation({
   onClose: () => void;
 }) {
   const [agreed, setAgreed] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const isCustom = booking.service?.id === "custom";
   const smsBody = [
     "Hi Djehamie! I'm writing from your official website.",
@@ -571,7 +572,7 @@ function StepConfirmation({
     .join(" ");
 
   return (
-    <div className="flex h-full flex-col items-center justify-center px-6 py-10 text-center sm:px-12">
+    <div className="flex min-h-full flex-col items-center justify-center px-6 py-10 text-center sm:px-12">
       {/* Icône SMS */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -629,14 +630,14 @@ function StepConfirmation({
             <p className="font-display text-base font-semibold text-brown-deep">
               How it works at the salon
             </p>
-            <a
-              href="/policies"
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
               className="shrink-0 font-sans text-[0.65rem] font-bold uppercase tracking-[0.12em] text-caramel underline underline-offset-2 transition-colors hover:text-brown-deep"
             >
-              Read everything
-            </a>
+              {showAll ? "Show less" : "Read everything"}
+            </button>
           </div>
 
           <ul className="mt-3 space-y-2">
@@ -647,6 +648,43 @@ function StepConfirmation({
               </li>
             ))}
           </ul>
+
+          {/* Tout le détail, déplié sur place : on ne quitte jamais la modale */}
+          <AnimatePresence initial={false}>
+            {showAll && (
+              <motion.div
+                key="all-policies"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="mt-4 space-y-3 border-t border-caramel/25 pt-4">
+                  <div>
+                    <p className="font-display text-sm font-semibold text-brown-deep">
+                      {policyHighlight.title}
+                    </p>
+                    <p className="mt-1 font-sans text-[0.72rem] leading-relaxed text-ink/70">
+                      {policyHighlight.body}
+                    </p>
+                    <p className="mt-1.5 font-sans text-[0.68rem] leading-relaxed text-caramel">
+                      {policyHighlight.note}
+                    </p>
+                  </div>
+
+                  {salonPolicies.map((p) => (
+                    <div key={p.t}>
+                      <p className="font-display text-sm font-semibold text-brown-deep">{p.t}</p>
+                      <p className="mt-0.5 font-sans text-[0.72rem] leading-relaxed text-ink/70">
+                        {p.d}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <label className="mt-4 flex cursor-pointer items-start gap-2.5 rounded-xl bg-white/70 p-3 transition-colors hover:bg-white">
             <input

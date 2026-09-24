@@ -23,7 +23,6 @@ export function Footer() {
             </h3>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link href="/booking" className="btn-gold">Book now</Link>
             <a
               href={business.googleReviewUrl}
               target="_blank"
