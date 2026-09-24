@@ -56,14 +56,14 @@ export function Navbar() {
         </Link>
 
         {/* Liens desktop */}
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {nav.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative text-sm font-sans font-medium transition-colors ${
+                className={`relative whitespace-nowrap text-sm font-sans font-medium transition-colors ${
                   scrolled || !isHome
                     ? active ? "text-brown-deep" : "text-ink/60 hover:text-brown-deep"
                     : active ? "text-cream" : "text-cream/70 hover:text-cream"

@@ -64,11 +64,6 @@ export function Footer() {
                   Booking
                 </Link>
               </li>
-              <li>
-                <Link href="/policies" className="text-cream/65 transition-colors hover:text-gold">
-                  Good to know
-                </Link>
-              </li>
             </ul>
           </div>
 
