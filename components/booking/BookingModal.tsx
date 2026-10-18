@@ -26,7 +26,8 @@ function getDaysInMonth(year: number, month: number) {
 function isAvailable(date: Date) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  return date >= today; // 7j/7 sur rendez-vous, pas dans le passé
+  if (date.getDay() === 0) return false; // salon fermé le dimanche
+  return date >= today; // sur rendez-vous, pas dans le passé
 }
 function formatDate(date: Date) {
   return `${DAYS_FR[date.getDay()]}, ${MONTHS_FR[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
@@ -232,7 +233,7 @@ function StepCalendar({
           Your preferred time
         </h2>
         <p className="mt-1 font-sans text-sm text-ink/55">
-          7 days a week, by appointment. The time will be confirmed by text with Djehamie.
+          Monday to Saturday, by appointment. Closed on Sundays. The time will be confirmed by text with Djehamie.
         </p>
       </div>
 

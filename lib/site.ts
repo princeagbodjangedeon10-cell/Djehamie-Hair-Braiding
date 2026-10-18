@@ -12,7 +12,7 @@ export const business = {
   addressShort: "3111 W Armitage Ave, Chicago, IL",
   phoneDisplay: "(773) 801-9351",
   phone: "+17738019351",
-  hours: "Open 7 days a week · by appointment · until 11 PM",
+  hours: "Monday to Saturday · by appointment · until 11 PM · Closed on Sundays",
   instagram: "https://www.instagram.com/djehamiehair/",
   instagramHandle: "@djehamiehair",
   facebook: "https://www.facebook.com/",

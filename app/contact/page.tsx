@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact & address: 3111 W Armitage Ave, Chicago",
   description:
-    "Contact Djehamie Hair Braiding in Chicago: 3111 W Armitage Ave, (773) 801-9351, the salon's only official number. Call, text, and social media. Open 7 days a week by appointment.",
+    "Contact Djehamie Hair Braiding in Chicago: 3111 W Armitage Ave, (773) 801-9351, the salon's only official number. Call, text, and social media. Open Monday to Saturday by appointment, closed on Sundays.",
 };
 
 export default function ContactPage() {

@@ -188,8 +188,8 @@ export default function HomePage() {
                 Book in a few seconds
               </h2>
               <p className="mx-auto mt-5 max-w-md font-sans text-cream/70">
-                Open 7 days a week, by appointment. Pick your style, send your request by
-                text, and Djehamie replies to you personally.
+                Open Monday to Saturday, by appointment, closed on Sundays. Pick your style,
+                send your request by text, and Djehamie replies to you personally.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <BookingButton className="btn-gold">

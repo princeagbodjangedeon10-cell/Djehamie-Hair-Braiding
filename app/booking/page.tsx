@@ -22,7 +22,7 @@ const steps = [
   {
     n: "02",
     t: "Choose your preferred time",
-    d: "Open 7 days a week, by appointment. Tell us the day and time that work for you, and Djehamie adapts to your schedule.",
+    d: "Open Monday to Saturday, by appointment. The salon is closed on Sundays. Tell us the day and time that work for you, and Djehamie adapts to your schedule.",
   },
   {
     n: "03",
