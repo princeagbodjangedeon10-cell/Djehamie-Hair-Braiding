@@ -14,7 +14,7 @@ import { OfficialNumberBadge } from "@/components/AntiScam";
 export const metadata: Metadata = {
   title: "Good to know before your appointment",
   description:
-    "Salon policies at Djehamie Hair Braiding, Chicago: you never pay upfront (payment is due once your braids are halfway done), allergy and comfort care, free adjustments within 24 hours, and photo consent.",
+    "Salon policies at Djehamie Hair Braiding, Chicago: payment is due before service, in person at the salon, no checks accepted, plus allergy and comfort care, free adjustments within 24 hours, and photo consent.",
 };
 
 export default function PoliciesPage() {
@@ -52,17 +52,17 @@ export default function PoliciesPage() {
                   {policyHighlight.body}
                 </p>
 
-                {/* Les trois temps du rendez-vous */}
+                {/* Les trois faits du paiement */}
                 <div className="mt-10 grid gap-4 sm:grid-cols-3">
                   {[
-                    { n: "0 %", t: "You arrive", d: "Nothing to pay. We talk style and price together." },
-                    { n: "50 %", t: "Halfway done", d: "You see the work, then you pay in full at the salon." },
-                    { n: "100 %", t: "You leave", d: "You check your style in the mirror before heading out." },
+                    { t: "Before braiding", d: "Payment in full before the first braid. It is the same for every client." },
+                    { t: "In person, at the salon", d: "Face to face, on the spot. Never by transfer to someone you have not met." },
+                    { t: "No checks", d: "Checks are not accepted. Ask about accepted payment methods when you book." },
                   ].map((s, i) => (
-                    <Reveal key={s.n} delay={i * 90}>
+                    <Reveal key={s.t} delay={i * 90}>
                       <div className="h-full rounded-2xl border border-cream/10 bg-cream/5 p-5">
-                        <span className="font-display text-3xl text-caramel">{s.n}</span>
-                        <p className="mt-2 font-display text-lg text-cream">{s.t}</p>
+                        <span className="block h-1 w-8 rounded-full bg-caramel" />
+                        <p className="mt-4 font-display text-lg text-cream">{s.t}</p>
                         <p className="mt-1 font-sans text-sm leading-relaxed text-cream/60">{s.d}</p>
                       </div>
                     </Reveal>

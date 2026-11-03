@@ -124,7 +124,8 @@ export default function BookingPage() {
             </span>
             <p className="mt-4 font-display text-xl text-brown-deep">How does payment work?</p>
             <p className="mt-3 font-sans text-sm font-semibold leading-relaxed text-brown-deep">
-              You never pay upfront. Payment is due once your braids are halfway done.
+              Payment is due before service: you pay at the salon, in person, before braiding
+              starts. No checks accepted.
             </p>
             <p className="mt-3 font-sans text-sm leading-relaxed text-ink/65">
               {paymentPolicy}
